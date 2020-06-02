@@ -13,6 +13,14 @@ assert_eq!("test, 10, b, true", concat!(with ", ", "test", 10, 'b', true));
 assert_eq!("test\n10\nb\ntrue", concat_line!("test", 10, 'b', true));
 ```
 
+Prefixes and suffixes can also be added.
+
+```rust
+#[macro_use] extern crate concat_with;
+
+assert_eq!("Someone says: Hello.\nSomeone says: Nice to meet you!", concat_line!(prefix "Someone says: ", "Hello.", "Nice to meet you!"));
+```
+
 ## Crates.io
 
 https://crates.io/crates/concat-with
