@@ -1,0 +1,18 @@
+[package]
+name = "concat-with"
+version = "0.1.0"
+authors = ["Magic Len <len@magiclen.org>"]
+edition = "2018"
+repository = "https://github.com/magiclen/concat-with"
+homepage = "https://magiclen.org/concat-with"
+keywords = ["concat", "line", "comma", "space", "join"]
+categories = ["rust-patterns"]
+description= "Extend the function of the `concat!` macro in `std`."
+readme = "README.md"
+license = "MIT"
+
+[badges.travis-ci]
+repository = "magiclen/concat-with"
+branch = "master"
+
+[dependencies]
