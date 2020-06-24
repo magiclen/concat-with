@@ -20,17 +20,19 @@ assert_eq!("Someone says: Hello.\nSomeone says: Nice to meet you!", concat_line!
 ```
 */
 
-/// Concatenates literals into a static string slice.
-///
-/// This macro is like the `concat!` macro in `std`, but can also be used to concatenate literals separated by a specific literal. Prefixes and suffixes can also be added.
-///
-/// ```rust
-/// #[macro_use] extern crate concat_with;
-///
-/// assert_eq!("test10btrue", concat!("test", 10, 'b', true));
-/// assert_eq!("test, 10, b, true", concat!(with ", ", "test", 10, 'b', true));
-/// assert_eq!("test\n10\nb\ntrue", concat_line!("test", 10, 'b', true));
-/// ```
+/**
+Concatenates literals into a static string slice.
+
+This macro is like the `concat!` macro in `std`, but can also be used to concatenate literals separated by a specific literal. Prefixes and suffixes can also be added.
+
+```rust
+#[macro_use] extern crate concat_with;
+
+assert_eq!("test10btrue", concat!("test", 10, 'b', true));
+assert_eq!("test, 10, b, true", concat!(with ", ", "test", 10, 'b', true));
+assert_eq!("test\n10\nb\ntrue", concat_line!("test", 10, 'b', true));
+```
+*/
 #[macro_export]
 macro_rules! concat {
     ($(,)*) => {
@@ -179,13 +181,15 @@ macro_rules! concat {
     };
 }
 
-/// Concatenates literals into a static string slice separated by a line break, `\n`. Prefixes and suffixes can also be added.
-///
-/// ```rust
-/// #[macro_use] extern crate concat_with;
-///
-/// assert_eq!("test\n10\nb\ntrue", concat_line!("test", 10, 'b', true));
-/// ```
+/**
+Concatenates literals into a static string slice separated by a line break, `\n`. Prefixes and suffixes can also be added.
+
+```rust
+#[macro_use] extern crate concat_with;
+
+assert_eq!("test\n10\nb\ntrue", concat_line!("test", 10, 'b', true));
+```
+*/
 #[macro_export]
 macro_rules! concat_line {
     ($($e:expr),* $(,)*) => {
