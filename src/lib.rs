@@ -201,6 +201,31 @@ macro_rules! concat {
     };
 }
 
+#[doc(hidden)]
+#[macro_export]
+macro_rules! concat_impl_inner {
+    ($(#[$attr:meta])* $name:ident, $w: expr, $dollar:tt) => {
+        $(#[$attr])*
+        macro_rules! $name {
+            ($dollar($dollar e:expr),* $dollar(,)*) => {
+                $crate::concat!(with $w $dollar(, $dollar e)*)
+            };
+            (prefix $dollar p:expr $dollar(, $dollar e:expr)* $dollar(,)*) => {
+                $crate::concat!(with $w, prefix $dollar p $dollar (, $dollar e)*)
+            };
+            (suffix $dollar s:expr $dollar(, $e:expr)* $dollar(,)*) => {
+                $crate::concat!(with $w, suffix $dollar s $dollar(, $dollar e)*)
+            };
+            (prefix $dollar p:expr, suffix $dollar s:expr $dollar(, $dollar e:expr)* $dollar(,)*) => {
+                $crate::concat!(with $w, prefix $dollar p, suffix $dollar s $dollar(, $dollar e)*)
+            };
+            (suffix $dollar s:expr, prefix $dollar p:expr $dollar(, $dollar e:expr)* $dollar(,)*) => {
+                $crate::concat!(with $w, prefix $dollar p, suffix $dollar s $dollar(, $dollar e)*)
+            };
+        }
+    };
+}
+
 /**
 Create macros used for concatenating literals separated by a specific literal.
 
@@ -222,29 +247,9 @@ assert_eq!("test:10:b:true", concat_with_colon!("test", 10, 'b', true));
 */
 #[macro_export]
 macro_rules! concat_impl {
-    (@inner $(#[$attr:meta])* $name:ident, $w: expr, $dollar:tt) => {
-        $(#[$attr])*
-        macro_rules! $name {
-            ($dollar($dollar e:expr),* $dollar(,)*) => {
-                $crate::concat!(with $w $dollar(, $dollar e)*)
-            };
-            (prefix $dollar p:expr $dollar(, $dollar e:expr)* $dollar(,)*) => {
-                $crate::concat!(with $w, prefix $dollar p $dollar (, $dollar e)*)
-            };
-            (suffix $dollar s:expr $dollar(, $e:expr)* $dollar(,)*) => {
-                $crate::concat!(with $w, suffix $dollar s $dollar(, $dollar e)*)
-            };
-            (prefix $dollar p:expr, suffix $dollar s:expr $dollar(, $dollar e:expr)* $dollar(,)*) => {
-                $crate::concat!(with $w, prefix $dollar p, suffix $dollar s $dollar(, $dollar e)*)
-            };
-            (suffix $dollar s:expr, prefix $dollar p:expr $dollar(, $dollar e:expr)* $dollar(,)*) => {
-                $crate::concat!(with $w, prefix $dollar p, suffix $dollar s $dollar(, $dollar e)*)
-            };
-        }
-    };
     ($($(#[$attr:meta])* $name:ident => $w:expr),* $(,) *) => {
         $(
-            $crate::concat_impl!(@inner $(#[$attr])* $name, $w, $);
+            $crate::concat_impl_inner!($(#[$attr])* $name, $w, $);
         )*
     };
 }
