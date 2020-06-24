@@ -21,6 +21,26 @@ Prefixes and suffixes can also be added.
 assert_eq!("Someone says: Hello.\nSomeone says: Nice to meet you!", concat_line!(prefix "Someone says: ", "Hello.", "Nice to meet you!"));
 ```
 
+## Create Your Own Macros
+
+The `concat_impl!` macro can be used to create your own macros like `concat_line!` which concatenates literals separated by a specific literal.
+
+```rust
+#[macro_use] extern crate concat_with;
+
+concat_impl! {
+    #[macro_export]
+    /// Concatenates literals into a static string slice separated by a comma, `,`. Prefixes and suffixes can also be added.
+    concat_with_comma => ", ",
+    #[macro_export]
+    /// Concatenates literals into a static string slice separated by a colon, `:`. Prefixes and suffixes can also be added.
+    concat_with_colon => ':',
+}
+
+assert_eq!("test, 10, b, true", concat_with_comma!("test", 10, 'b', true));
+assert_eq!("test:10:b:true", concat_with_colon!("test", 10, 'b', true));
+```
+
 ## Crates.io
 
 https://crates.io/crates/concat-with
