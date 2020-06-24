@@ -24,7 +24,10 @@ assert_eq!("Someone says: Hello.\nSomeone says: Nice to meet you!", concat_line!
 The `concat_impl!` macro can be used to create your own macros like `concat_line!` which concatenates literals separated by a specific literal.
 
 ```rust
-#[macro_use] extern crate concat_with;
+extern crate concat_with;
+
+#[doc(hidden)]
+pub use concat_with::{concat, concat_impl}; // re-export `concat!` and `concat_impl!` if your custom macros use `#[macro_export]`
 
 concat_impl! {
     #[macro_export]
@@ -209,7 +212,7 @@ Create macros used for concatenating literals separated by a specific literal.
 
 concat_impl! {
     #[macro_export]
-    /// Concatenates literals into a static string slice separated by a comma, `,`. Prefixes and suffixes can also be added.
+    /// Concatenates literals into a static string slice separated by a comma and a whitespace, `, `. Prefixes and suffixes can also be added.
     concat_with_comma => ", ",
     #[macro_export]
     /// Concatenates literals into a static string slice separated by a colon, `:`. Prefixes and suffixes can also be added.
