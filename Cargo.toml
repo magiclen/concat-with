@@ -1,6 +1,6 @@
 [package]
 name = "concat-with"
-version = "0.2.4"
+version = "0.2.5"
 authors = ["Magic Len <len@magiclen.org>"]
 edition = "2018"
 repository = "https://github.com/magiclen/concat-with"
@@ -10,7 +10,7 @@ categories = ["rust-patterns"]
 description= "Extend the function of the `concat!` macro in `std`."
 readme = "README.md"
 license = "MIT"
-include = ["src/**/*", "Cargo.toml"]
+include = ["src/**/*", "Cargo.toml", "README.md", "LICENSE"]
 
 [badges.travis-ci]
 repository = "magiclen/concat-with"
