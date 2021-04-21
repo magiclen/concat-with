@@ -1,6 +1,6 @@
 [package]
 name = "concat-with"
-version = "0.2.5"
+version = "0.2.6"
 authors = ["Magic Len <len@magiclen.org>"]
 edition = "2018"
 repository = "https://github.com/magiclen/concat-with"
@@ -11,9 +11,5 @@ description = "Extend the function of the `concat!` macro in `std`."
 readme = "README.md"
 license = "MIT"
 include = ["src/**/*", "Cargo.toml", "README.md", "LICENSE"]
-
-[badges.travis-ci]
-repository = "magiclen/concat-with"
-branch = "master"
 
 [dependencies]

@@ -1,7 +1,7 @@
 Concat With
 ====================
 
-[![Build Status](https://travis-ci.org/magiclen/concat-with.svg?branch=master)](https://travis-ci.org/magiclen/concat-with)
+[![CI](https://github.com/magiclen/concat-with/actions/workflows/ci.yml/badge.svg)](https://github.com/magiclen/concat-with/actions/workflows/ci.yml)
 
 While the `concat!` macro in `std` is useful to create a static string slice (`&'static str`) from literals, it cannot set a separator for those. This crate therefore provides another `concat!` macro to deal with that situation.
 
