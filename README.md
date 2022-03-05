@@ -6,19 +6,15 @@ Concat With
 While the `concat!` macro in `std` is useful to create a static string slice (`&'static str`) from literals, it cannot set a separator for those. This crate therefore provides another `concat!` macro to deal with that situation.
 
 ```rust
-#[macro_use] extern crate concat_with;
-
-assert_eq!("test10btrue", concat!("test", 10, 'b', true));
-assert_eq!("test, 10, b, true", concat!(with ", ", "test", 10, 'b', true));
-assert_eq!("test\n10\nb\ntrue", concat_line!("test", 10, 'b', true));
+assert_eq!("test10btrue", concat_with::concat!("test", 10, 'b', true));
+assert_eq!("test, 10, b, true", concat_with::concat!(with ", ", "test", 10, 'b', true));
+assert_eq!("test\n10\nb\ntrue", concat_with::concat_line!("test", 10, 'b', true));
 ```
 
 Prefixes and suffixes can also be added.
 
 ```rust
-#[macro_use] extern crate concat_with;
-
-assert_eq!("Someone says: Hello.\nSomeone says: Nice to meet you!", concat_line!(prefix "Someone says: ", "Hello.", "Nice to meet you!"));
+assert_eq!("Someone says: Hello.\nSomeone says: Nice to meet you!", concat_with::concat_line!(prefix "Someone says: ", "Hello.", "Nice to meet you!"));
 ```
 
 ## Create Your Own Macros
@@ -26,8 +22,6 @@ assert_eq!("Someone says: Hello.\nSomeone says: Nice to meet you!", concat_line!
 The `concat_impl!` macro can be used to create your own macros like `concat_line!` which concatenates literals separated by a specific literal.
 
 ```rust
-extern crate concat_with;
-
 #[doc(hidden)]
 pub use concat_with::{concat, concat_impl}; // re-export `concat!` and `concat_impl!` if your custom macros use `#[macro_export]`
 

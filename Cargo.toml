@@ -1,8 +1,8 @@
 [package]
 name = "concat-with"
-version = "0.2.6"
+version = "0.2.7"
 authors = ["Magic Len <len@magiclen.org>"]
-edition = "2018"
+edition = "2021"
 repository = "https://github.com/magiclen/concat-with"
 homepage = "https://magiclen.org/concat-with"
 keywords = ["concat", "line", "comma", "space", "join"]

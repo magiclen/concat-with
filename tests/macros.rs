@@ -1,5 +1,3 @@
-extern crate concat_with;
-
 #[test]
 fn concat() {
     assert_eq!("", concat_with::concat!());
