@@ -53,3 +53,24 @@ jobs:
       - run: cargo build
       - run: cargo test
       - run: cargo doc
+
+  build-cross:
+    strategy:
+      fail-fast: false
+      matrix:
+        target:
+          - thumbv7m-none-eabi
+        toolchain:
+          - stable
+          - nightly
+    name: Cross-build ${{ matrix.toolchain }} for ${{ matrix.target }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: ${{ matrix.toolchain }}
+          override: true
+      - run: rustup target add ${{ matrix.target }}
+      - run: cargo build --target ${{ matrix.target }}
