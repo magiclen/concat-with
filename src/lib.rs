@@ -37,6 +37,8 @@ assert_eq!("test:10:b:true", concat_with_colon!("test", 10, 'b', true));
 ```
 */
 
+#![no_std]
+
 /**
 Concatenates literals into a static string slice.
 
