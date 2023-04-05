@@ -36,6 +36,7 @@ assert_eq!("test, 10, b, true", concat_with_comma!("test", 10, 'b', true));
 assert_eq!("test:10:b:true", concat_with_colon!("test", 10, 'b', true));
 ```
 */
+#![no_std]
 
 #![no_std]
 
