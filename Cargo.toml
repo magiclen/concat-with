@@ -9,7 +9,6 @@ homepage = "https://magiclen.org/concat-with"
 keywords = ["concat", "line", "comma", "space", "join"]
 categories = ["no-std", "rust-patterns"]
 description = "Extend the function of the `concat!` macro in `std`."
-readme = "README.md"
 license = "MIT"
 include = ["src/**/*", "Cargo.toml", "README.md", "LICENSE"]
 
