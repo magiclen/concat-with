@@ -56,46 +56,46 @@ macro_rules! concat {
         ""
     };
     ( $e:expr $(,)*) => {
-        ::std::concat!($e)
+        ::core::concat!($e)
     };
     ( $e:expr $(, $es:expr)+ $(,)*) => {
-        ::std::concat!( $e $(, $es)+ )
+        ::core::concat!( $e $(, $es)+ )
     };
     (with $w:expr $(,)*) => {
         ""
     };
     (with $w:expr, $e:expr $(,)*) => {
-        ::std::concat!($e)
+        ::core::concat!($e)
     };
     (with $w:expr, $e:expr $(, $es:expr)+ $(,)*) => {
-        ::std::concat!( $e $(, $w, $es)+ )
+        ::core::concat!( $e $(, $w, $es)+ )
     };
     (prefix $p:expr $(,)*) => {
         ""
     };
     (prefix $p:expr, $e:expr $(,)*) => {
-        ::std::concat!($p, $e)
+        ::core::concat!($p, $e)
     };
     (prefix $p:expr, $e:expr $(, $es:expr)+ $(,)*) => {
-        ::std::concat!($p, $e $(, $p, $es)+ )
+        ::core::concat!($p, $e $(, $p, $es)+ )
     };
     (suffix $s:expr $(,)*) => {
         ""
     };
     (suffix $s:expr, $e:expr $(,)*) => {
-        ::std::concat!($e, $s)
+        ::core::concat!($e, $s)
     };
     (suffix $s:expr, $e:expr $(, $es:expr)+ $(,)*) => {
-        ::std::concat!($e, $s $(, $es, $s)+ )
+        ::core::concat!($e, $s $(, $es, $s)+ )
     };
     (prefix $p:expr, suffix $s:expr $(,)*) => {
         ""
     };
     (prefix $p:expr, suffix $s:expr, $e:expr $(,)*) => {
-        ::std::concat!($p, $e, $s)
+        ::core::concat!($p, $e, $s)
     };
     (prefix $p:expr, suffix $s:expr, $e:expr $(, $es:expr)+ $(,)*) => {
-        ::std::concat!($p, $e, $s $(, $p, $es, $s)+ )
+        ::core::concat!($p, $e, $s $(, $p, $es, $s)+ )
     };
     (suffix $s:expr, prefix $p:expr $(,)*) => {
         $crate::concat!(prefix $p, suffix $s)
@@ -110,10 +110,10 @@ macro_rules! concat {
         ""
     };
     (with $w:expr, prefix $p:expr, $e:expr $(,)*) => {
-        ::std::concat!($p, $e)
+        ::core::concat!($p, $e)
     };
     (with $w:expr, prefix $p:expr, $e:expr $(, $es:expr)+ $(,)*) => {
-        ::std::concat!($p, $e $(, $w, $p, $es)+ )
+        ::core::concat!($p, $e $(, $w, $p, $es)+ )
     };
     (prefix $p:expr, with $w:expr $(,)*) => {
         $crate::concat!(with $w, prefix $p)
@@ -128,10 +128,10 @@ macro_rules! concat {
         ""
     };
     (with $w:expr, suffix $s:expr, $e:expr $(,)*) => {
-        ::std::concat!($e, $s)
+        ::core::concat!($e, $s)
     };
     (with $w:expr, suffix $s:expr, $e:expr $(, $es:expr)+ $(,)*) => {
-        ::std::concat!($e, $s $(, $w, $es, $s)+ )
+        ::core::concat!($e, $s $(, $w, $es, $s)+ )
     };
     (suffix $s:expr, with $w:expr $(,)*) => {
         $crate::concat!(with $w, suffix $s)
@@ -146,10 +146,10 @@ macro_rules! concat {
         ""
     };
     (with $w:expr, prefix $p:expr, suffix $s:expr, $e:expr $(,)*) => {
-        ::std::concat!($p, $e, $s)
+        ::core::concat!($p, $e, $s)
     };
     (with $w:expr, prefix $p:expr, suffix $s:expr, $e:expr $(, $es:expr)+ $(,)*) => {
-        ::std::concat!($p, $e, $s $(, $w, $p, $es, $s)+ )
+        ::core::concat!($p, $e, $s $(, $w, $p, $es, $s)+ )
     };
     (prefix $p:expr, with $w:expr, suffix $s:expr $(,)*) => {
         $crate::concat!(with $w, prefix $p, suffix $s)
