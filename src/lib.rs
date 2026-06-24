@@ -251,6 +251,5 @@ concat_impl! {
     /// ```rust
     /// assert_eq!("test\n10\nb\ntrue", concat_with::concat_line!("test", 10, 'b', true));
     /// ```
-    /// */
     concat_line => "\n"
 }

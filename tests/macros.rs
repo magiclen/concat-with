@@ -175,3 +175,13 @@ fn concat_line_suffix_prefix() {
     assert_eq!(" 1 ", concat_with::concat_line!(suffix " ", prefix " ", 1));
     assert_eq!(" 1 \n a \n 武 ", concat_with::concat_line!(suffix " ", prefix " ", 1, "a", "武"));
 }
+
+#[test]
+fn concat_impl_custom_macro() {
+    concat_with::concat_impl! {
+        concat_with_semicolon => ";",
+    }
+
+    assert_eq!("1;a;武", concat_with_semicolon!(1, "a", "武"));
+    assert_eq!("1.;a.;武.", concat_with_semicolon!(suffix ".", 1, "a", "武"));
+}
